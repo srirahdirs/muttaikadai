@@ -1,0 +1,41 @@
+/*
+Template Name: muttaikadai - Online Egg Selling Platform
+author: nsstheme
+*/
+
+/* customStyles.css */
+.custom-slider .slick-prev,
+.custom-slider .slick-next {
+  @apply absolute  flex md:block bottom-9 text-purple hover:text-white w-[34px] h-[34px] bg-white transition-all duration-500 hover:bg-gold rounded-full  items-center justify-center  shadow-md text-sm z-10;
+}
+
+.custom-slider .slick-prev {
+  @apply left-[35px]; /* Adjust left position */
+}
+
+.custom-slider .slick-next {
+  @apply right-[510px]; /* Adjust right position */
+}
+
+.slick-arrow.slick-prev,
+.slick-arrow.slick-next {
+  font-size: 0px;
+}
+
+.slick-arrow.slick-prev:before {
+  content: "prev";
+  font-family: "swiper-icons";
+  @apply font-semibold text-sm absolute left-1/2 top-1/2 -translate-x-[60%] -translate-y-[45%] opacity-100;
+}
+.slick-arrow.slick-next:before {
+  content: "next";
+  font-family: "swiper-icons";
+  @apply font-semibold absolute text-sm  left-1/2 top-1/2 -translate-x-[40%] -translate-y-[45%] opacity-100;
+}
+/*media query*/
+@media (max-width: 768px) {
+  .slick-arrow.slick-prev,
+  .slick-arrow.slick-next {
+    display: none !important;
+  }
+}

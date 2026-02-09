@@ -1,0 +1,16 @@
+/*
+Template Name: muttaikadai - Online Egg Selling Platform
+author: nsstheme
+*/
+
+/*slider*/
+.slick-track {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+
+.slick-list {
+  overflow: hidden;
+}
+

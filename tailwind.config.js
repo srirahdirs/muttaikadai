@@ -1,0 +1,102 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      animation: {
+        "spin-slow": "spin 15s linear infinite",
+        "spin-medium": "spin 7s linear infinite",
+      },
+
+      fontFamily: {
+        gloria: ["var(--font-gloria)"],
+        bebas: ["var(--font-bebas)"],
+        montserrat: ["var(--font-montserrat)"],
+      },
+      fontSize: {
+        sm: ["0.875rem", "28px"],
+      },
+      colors: {
+        mint: "#f5f5f5",
+        "soft-mint": "#F2F7F3",
+        "dark-gray": "#5C5D5F",
+        "light-gray": "#707070",
+        search: "#A9ADB9",
+        "silver-mist": "#E6E6E6",
+        "light-slate": "#E2E2E2",
+        purple: "#010148",
+        gold: "#FFC737",
+        orange: "#FF7E02",
+        pearl: "#E5DDCC",
+        "light-pearl": "#F9F4EE",
+        "dark-pearl": "#E8EEE4",
+        gray: "#858585",
+        green: "#4FC396",
+        "light-green": "#55CE9F",
+        "pearl-bg": "#F9F9F9",
+        "blog-border": "#DEDEDE",
+        footer: "#F5FCF9",
+        "dark-green": "#4D8526",
+        "footer-text": "#959595",
+      },
+      spacing: {
+        gutter: "15px",
+      },
+      backgroundImage: {
+        "hero-slider-1": "url('/assets/images/slider/1.jpg')",
+        "hero-slider-2": "url('/assets/images/slider/1_3.jpg')",
+        "hero-slider-3": "url('/assets/images/slider/1_2.jpg')",
+        card: "url('/img/home/card-bg.png')",
+        offer: "url('/img/home/offer-bg.png')",
+        offer2: "url('/img/home/offer-bg-2.png') ",
+        offer3: "url('/assets/images/home2/1.png') ",
+        "offer-main": "url('/img/home/offer-main-bg.png') ",
+        "deals-top": "url('/assets/images/bg/header-bg.png') ",
+        deals: "url('/assets/images/bg/1.png') ",
+        "deals-card": "url('/assets/images/bg/dealsbg.png') ",
+        "deals-card-bg": "url('/assets/images/bg/banner-fixed.png') ",
+        "deals-bg-fruits": "url('/assets/images/bg/1.jpg') ",
+        "deals-bg-apple": "url('/assets/images/bg/apple.png') ",
+        "footer-bg-left": "url('/assets/images/bg/flower.png') ",
+        "footer-bg-right": "url('/assets/images/bg/footer-bg.png') ",
+        rectangle: "url('/assets/images/bg/rectangle.png') ",
+        organic: "url('/assets/images/home1/organic.png') ",
+        "hero-banner": "url('/assets/images/home2/1.jpg') ",
+        service: "url('/assets/images/home2/service-bg.png') ",
+        summer: "url('/assets/images/bg/3.jpg') ",
+        "home2-slider1": "url('/assets/images/slider/2_1.jpg') ",
+        "home2-slider2": "url('/assets/images/slider/2.jpg') ",
+        organic2: "url('/assets/images/bg/organic.png') ",
+        organic3: "url('/assets/images/bg/4.jpg') ",
+        "summer-sale": "url('/assets/images/bg/5.jpg') ",
+        "new-arrivals": "url('/assets/images/bg/4.png') ",
+        "footer-top": "url('/assets/images/bg/footer2.png') ",
+      },
+      screens: {
+        sm: "640px",
+
+        md: "768px",
+
+        lg: "1100px",
+
+        xl: "1280px",
+
+        "2xl": "1536px",
+      },
+      boxShadow: {
+        card: "0px 8px 44px 0px rgba(12, 12, 12, 0.06)",
+        nav: "0px 3px 20px 0px rgba(0, 0, 0, 0.15)",
+        "card-2": "0px 8px 29px 0px rgba(0, 0, 0, 0.05)",
+        "card-3": "0px 10px 26px 0px rgba(0, 0, 0, 0.09)",
+        "card-4": "0px 10px 30px 0px rgba(0, 0, 0, 0.20)",
+        icon: "0px 3px 20px 0px rgba(0, 0, 0, 0.08)",
+        "member-card": "10px 10px 0px #e8eee4",
+      },
+    },
+  },
+  plugins: [],
+};

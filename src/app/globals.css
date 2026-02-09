@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  line-height: 1.5;
+}
+
+/* Chrome, Safari, Edge, Opera */
+#contact.input::-webkit-outer-spin-button,
+#contact.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Define the color for the range track */
+input[type="range"] {
+  -webkit-appearance: none;
+
+  appearance: none;
+
+  width: 100%;
+
+  height: 5px;
+
+  background-color: #ffc737;
+
+  outline: none;
+  border-radius: 100vh;
+}
+
+/* Style the thumb (handle) of the range input */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+
+  width: 15px;
+
+  height: 15px;
+
+  background-color: #ff7e02;
+
+  border-radius: 50%;
+
+  cursor: pointer;
+}
+
+/* Checkout from */
+
+.checkout-input-label {
+  @apply block text-base mb-5 font-bold text-purple;
+}
+.checkout-input {
+  @apply px-5 py-4 w-full  placeholder:text-[#A9ADB9] focus-visible:outline-gold border border-pearl text-sm h-[50px] text-[#A9ADB9];
+}
+
+.text-gold {
+  --tw-text-opacity: 1;
+  color: red !important;
+}

@@ -1,0 +1,53 @@
+/*
+Template Name: muttaikadai - Online Egg Selling Platform
+author: nsstheme
+*/
+
+/*slider container*/
+.slider-container .slick-track {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+}
+.slick-list {
+  overflow: hidden;
+}
+.slick-prev:before {
+  content: "prev";
+  font-family: "swiper-icons";
+  @apply text-inherit text-sm absolute left-1/2 top-1/2 -translate-x-[60%] -translate-y-[45%] opacity-100;
+}
+.slick-next:before {
+  content: "next";
+  font-family: "swiper-icons";
+  @apply text-inherit absolute text-sm  left-1/2 top-1/2 -translate-x-[40%] -translate-y-[45%] opacity-100;
+}
+.slick-prev {
+  left: -4px;
+}
+.slick-next {
+  right: -4px;
+}
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before {
+  @apply opacity-90;
+}
+.slick-arrow.slick-prev,
+.slick-arrow.slick-next {
+  @apply hidden md:grid  text-dark-gray place-content-center h-10 w-10 hover:text-white bg-[#E5E5E5] hover:bg-gold transition-all z-20 rounded-full;
+}
+.swiper-button-next,
+.swiper-button-prev {
+  @apply bg-white hover:bg-gold hover:text-white transition-all right-[10px] p-[20px] md:p-[30px] rounded-full text-purple;
+}
+.swiper-button-prev:after,
+.swiper-button-next:after {
+  font-size: 24px !important;
+}
+/*Media query*/
+@media (max-width: 1200px) {
+  .slick-arrow.slick-prev,
+  .slick-arrow.slick-next {
+    display: none !important;
+  }
+}
