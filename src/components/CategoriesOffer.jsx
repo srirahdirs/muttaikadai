@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ButtonShopNow from "./ButtonShopNow";
 import SectionHeading from "./SectionHeading";
 
@@ -13,37 +14,59 @@ const CategoriesOffer = () => {
         </p>
       </header>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-7  items-center">
-        <article className="isolate bg-white overflow-hidden relative h-[244px] bg-center  bg-no-repeat bg-cover bg  rounded-lg shadow-card-3 hover:shadow-card-4 transition-all duration-500 pt-[52px] pl-10 md:pl-[160px]">
-          <div className=" flex items-start w-full justify-between">
-            <h5 className="text-2xl  font-bold mb-3">
-              Premium <br />
-              Country Eggs
-            </h5>
-            <span className="text-[22px] mr-8 sm:mr-[74px] block font-bold text-gold">
-              -35% Off
-            </span>
+        <article className="isolate overflow-hidden relative h-[244px] rounded-lg shadow-card-3 hover:shadow-card-4 transition-all duration-500">
+          <div className="absolute inset-0 pt-[52px] pl-10 md:pl-[160px] bg-black/45 backdrop-blur-md border border-white/20 rounded-lg">
+            <div className=" flex items-start w-full justify-between">
+              <h5 className="text-2xl font-bold mb-3 text-white drop-shadow-sm">
+                Premium <br />
+                Country Eggs
+              </h5>
+              <span className="text-[22px] mr-8 sm:mr-[74px] block font-bold text-gold drop-shadow-sm">
+                -35% Off
+              </span>
+            </div>
+            <p className="text-sm mb-[14px] text-white/95 drop-shadow-sm">
+              Fresh farm eggs, best quality guaranteed
+            </p>
+            <ButtonShopNow>Shop Now</ButtonShopNow>
           </div>
-          <p className="text-sm mb-[14px]">
-            Fresh farm eggs, best quality guaranteed
-          </p>
-          <ButtonShopNow>Shop Now</ButtonShopNow>
-          <div className="z-[-1]  absolute inset-[-40px] bg-offer bg-no-repeat bg-cover bg-center"></div>
+          <div className="z-[-1] absolute inset-[-40px]">
+            <div className="relative w-full h-full">
+              <Image
+                src="/img/home/premium-country-eggs.jpg"
+                alt="Premium Country Eggs"
+                fill
+                className="object-cover object-center"
+              />
+            </div>
+          </div>
         </article>
-        <article className="h-[244px] bg-white overflow-hidden isolate relative pt-8 pl-12 rounded-lg shadow-card-3 hover:shadow-card-4 transition-all duration-500  ">
-          <div className="flex items-start w-full justify-between">
-            <h5 className="text-2xl  font-bold mb-3">
-              Free Range <br />
-              Organic Eggs
-            </h5>
-            <span className="text-[22px] mt-[-20px] mr-5 block font-bold text-gold">
-              -35% Off
-            </span>
+        <article className="isolate overflow-hidden relative h-[244px] rounded-lg shadow-card-3 hover:shadow-card-4 transition-all duration-500">
+          <div className="absolute inset-0 pt-8 pl-12 bg-black/25 backdrop-blur-md border border-white/20 rounded-lg">
+            <div className="flex items-start w-full justify-between">
+              <h5 className="text-2xl font-bold mb-3 text-white drop-shadow-sm">
+                Free Range <br />
+                Organic Eggs
+              </h5>
+              <span className="text-[22px] mt-[-20px] mr-5 block font-bold text-gold drop-shadow-sm">
+                -35% Off
+              </span>
+            </div>
+            <p className="text-sm mb-[14px] text-white/95 drop-shadow-sm">
+              Natural eggs from happy, free-roaming hens
+            </p>
+            <ButtonShopNow>Shop Now</ButtonShopNow>
           </div>
-          <p className="text-sm mb-[14px]">
-            Natural eggs from happy, free-roaming hens
-          </p>
-          <ButtonShopNow>Shop Now</ButtonShopNow>
-          <div className="z-[-1]  absolute w-[282px] h-[173px] bg-offer2 bg-no-repeat bg-contain bg-right-bottom bottom-0 right-0"></div>
+          <div className="z-[-1] absolute inset-[-40px]">
+            <div className="relative w-full h-full">
+              <Image
+                src="/img/home/free_range_organic_eggs_natural_eggs_from_happy.jpg"
+                alt="Free Range Organic Eggs"
+                fill
+                className="object-cover object-center"
+              />
+            </div>
+          </div>
         </article>
       </div>
     </section>

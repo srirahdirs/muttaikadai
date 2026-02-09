@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import ButtonAddToCart from "./ButtonAddToCart";
 import Rating from "./Rating";
+import Image from "next/image";
 
 const BestDealsCard = () => {
   const [product, setProduct] = useState(null);
@@ -47,7 +48,7 @@ const BestDealsCard = () => {
   const price = parseFloat(product.sale_price || product.price || 0);
   const regularPrice = parseFloat(product.price || 0);
   const salePrice = product.sale_price ? parseFloat(product.sale_price) : null;
-  const displayPrice = salePrice 
+  const displayPrice = salePrice
     ? `₹${salePrice.toFixed(2)} - ₹${regularPrice.toFixed(2)}`
     : `₹${regularPrice.toFixed(2)}`;
 
@@ -65,7 +66,18 @@ const BestDealsCard = () => {
       </p>
       <ButtonAddToCart product={product} quantity={1}>Add To Cart</ButtonAddToCart>
       <div className="absolute top-4 right-[10px] bg-contain bg-no-repeat w-[116px] h-[99px] bg-deals-card-bg z-[-1]"></div>
-      <div className="absolute -bottom-4 z-[-1] -right-2 bg-contain bg-no-repeat w-[290px] h-[290px] bg-deals-card"></div>
+      
+      <div className="absolute -bottom-4 z-[-1] -right-2 bg-contain bg-no-repeat w-[290px] h-[290px]">
+      <div className="absolute inset-0 bg-black/45 -right-2 -bottom-4 backdrop-blur-sm border border-white/20 rounded-lg z-[1]"> </div>
+        <div className="absolute -bottom-4 z-[-1] -right-2 w-[290px] h-[290px] relative overflow-hidden">
+          <Image
+            src="/img/home/free_range_organic_eggs_natural_eggs_from_happy.jpg"
+            alt=""
+            fill
+            className="object-cover object-center"
+          />
+        </div>
+      </div>
     </article>
   );
 };
