@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Suspense } from "react";
 import { fonts } from "../fonts/fonts";
 import { CartProvider } from "../context/CartContext";
 import RouteLoaderProvider from "../components/RouteLoaderProvider";
@@ -15,7 +16,9 @@ export default function RootLayout({ children }) {
       <body className={fonts}>
         <CartProvider>
           <WishlistProvider>
-            <RouteLoaderProvider>{children}</RouteLoaderProvider>
+            <Suspense fallback={children}>
+              <RouteLoaderProvider>{children}</RouteLoaderProvider>
+            </Suspense>
           </WishlistProvider>
         </CartProvider>
       </body>

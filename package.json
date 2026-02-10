@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "PORT=3090 next start",
     "lint": "next lint",
     "import-data": "node scripts/import-data.cjs",
     "create-admin": "node scripts/create-admin.cjs"

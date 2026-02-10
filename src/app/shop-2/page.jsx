@@ -48,7 +48,9 @@ const ShopPage2 = () => {
             </Suspense>
           </div>
           <div className="basis-[360px]">
-            <ShopSidebar />
+            <Suspense fallback={<div className="h-64 animate-pulse rounded bg-gray-100" />}>
+              <ShopSidebar />
+            </Suspense>
           </div>
         </div>
       </Container>
