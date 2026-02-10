@@ -32,17 +32,19 @@ const NewProductsCard = ({ product }) => {
       <article className="p-[10px]  group relative isolate shadow-card w-full h-[310px]">
         <div className="outline will-change-transform transition-all   outline-0 duration-300  group-hover:outline-2 group-hover:outline-offset-8 h-full outline-gold">
           <div className="p-[14px]">
-            <Image
-              src={product.image_url || '/assets/images/product/1.png'}
-              width={166}
-              height={136}
-              alt={product.name}
-              className="mx-auto object-contain"
-              onError={(e) => {
-                e.target.src = '/assets/images/product/1.png';
-                e.target.onerror = null;
-              }}
-            />
+            <div className="h-[136px] w-full max-w-[166px] mx-auto relative overflow-hidden bg-white">
+              <Image
+                src={product.image_url || '/assets/images/product/1.png'}
+                fill
+                sizes="166px"
+                alt={product.name}
+                className="object-contain"
+                onError={(e) => {
+                  e.target.src = '/assets/images/product/1.png';
+                  e.target.onerror = null;
+                }}
+              />
+            </div>
           </div>
           <div className="flex items-center justify-center text-center gap-[6px] flex-col mt-2">
             <h6 className="text-lg text-purple font-bold line-clamp-2">{product.name}</h6>

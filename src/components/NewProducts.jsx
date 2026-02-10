@@ -5,7 +5,7 @@ import { twMerge } from "tailwind-merge";
 
 const NewProducts = ({ className }) => {
   return (
-    <div className={twMerge("pt-40 pb-32", className)}>
+    <div className={twMerge("pt-20", className)}>
       <Container>
         <header className="mb-8  text-center">
           <SectionHeading>

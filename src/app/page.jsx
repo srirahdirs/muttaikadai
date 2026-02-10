@@ -20,7 +20,7 @@ export default function Home() {
       <BestDeals />
       <NewProducts />
       {/* <NewProductsBanners /> */}
-      <Testimonials />
+      {/* <Testimonials /> */}
       {/* <HealthyKitchen /> */}
       {/* <LatestBlogs /> */}
       <Footer />
