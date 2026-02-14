@@ -171,7 +171,7 @@ const CheckoutPage = () => {
               <div>
                 <CheckoutPriceInfo />
 
-                <div className="pl-10 pr-9 py-7 shadow-icon">
+                <div className="px-4 sm:px-6 lg:pl-10 lg:pr-9 py-7 shadow-icon">
                   <div className="flex mb-3 items-center gap-4">
                     <input
                       defaultChecked

@@ -1,3 +1,9 @@
+export const metadata = {
+  title: "Fresh Eggs in Coimbatore | Farm Eggs Home Delivery",
+  description:
+    "Buy fresh farm eggs in Coimbatore. Country eggs, free-range eggs & organic eggs delivered to your doorstep. Order online from Muttaikadai.",
+};
+
 import FlashSales from "../components/FlashSales";
 import Header from "../components/Header";
 import Hero from "../components/Hero";

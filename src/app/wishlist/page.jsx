@@ -2,6 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import { useWishlist } from "../../context/WishlistContext";
 import { useCart } from "../../context/CartContext";
 
@@ -11,6 +13,7 @@ export default function WishlistPage() {
 
   return (
     <div className="min-h-[70vh] bg-white">
+      <Header />
       <div className="max-w-[1220px] mx-auto px-4 py-10">
         <div className="flex items-center justify-between gap-4 mb-6">
           <h1 className="text-3xl font-bold text-purple">Wishlist</h1>
@@ -91,6 +94,7 @@ export default function WishlistPage() {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 }

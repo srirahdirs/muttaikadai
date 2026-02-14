@@ -1,3 +1,8 @@
+export const metadata = {
+  title: "Products - Fresh Eggs",
+  description: "Browse our range of fresh eggs - country eggs, free-range eggs, organic eggs. Order online for delivery in Coimbatore.",
+};
+
 import Link from "next/link";
 import { Suspense } from "react";
 import ButtonShopNow from "../../components/ButtonShopNow";
@@ -20,13 +25,13 @@ const ShopPage2 = () => {
       <header
         style={{
           background:
-            "url('/assets/images/slider/3.jpg')center/cover no-repeat",
+            "url('/assets/images/slider/3.jpg') center/cover no-repeat",
         }}
         className="h-[420px] pt-12   relative"
       >
         <Header />
         <Container>
-          <h1 className="text-5xl pt-8 md:text-7xl text-purple  text-center font-bold">
+          <h1 className="text-4xl sm:text-5xl pt-8 md:text-7xl text-purple text-center font-bold">
             Products
           </h1>
         </Container>
@@ -47,7 +52,7 @@ const ShopPage2 = () => {
               <ShopGrid />
             </Suspense>
           </div>
-          <div className="basis-[360px]">
+          <div className="w-full lg:w-auto lg:basis-[360px] shrink-0">
             <Suspense fallback={<div className="h-64 animate-pulse rounded bg-gray-100" />}>
               <ShopSidebar />
             </Suspense>

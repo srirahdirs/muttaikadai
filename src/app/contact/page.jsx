@@ -52,12 +52,12 @@ const ContactPage = () => {
 
   return (
     <div>
-      <header className="h-[650px] pt-12 relative">
+      <header className="h-[350px] sm:h-[450px] md:h-[550px] lg:h-[650px] pt-12 relative">
         <iframe
           src="https://www.google.com/maps?q=10.878676414489746,77.15547180175781&z=17&output=embed"
           width="600"
           height="450"
-          className="absolute inset-0 z-[-1] w-full h-[650px]"
+          className="absolute inset-0 z-[-1] w-full h-full min-h-[400px]"
           style={{ border: 0 }}
           allowFullScreen
         />
@@ -77,7 +77,7 @@ const ContactPage = () => {
         </header>
 
         <div className="flex flex-col gap-16 lg:flex-row">
-          <div className="basis-[730px] shadow-card-3 pt-24 pl-6 lg:pl-[100px] pb-16 pr-6">
+          <div className="w-full max-w-full lg:basis-[730px] shadow-card-3 pt-24 pl-6 lg:pl-[100px] pb-16 pr-6">
             <form onSubmit={handleSubmit} className="flex w-full flex-col gap-5 md:gap-[10px]">
               <div className="flex flex-col md:flex-row w-full gap-5 md:gap-[30px]">
                 <div className="bg-mint w-full px-5 relative">
