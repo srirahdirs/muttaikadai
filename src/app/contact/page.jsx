@@ -52,7 +52,7 @@ const ContactPage = () => {
 
   return (
     <div>
-      <header className="h-[350px] sm:h-[450px] md:h-[550px] lg:h-[650px] pt-12 relative">
+      <header className="h-[350px] sm:h-[450px] md:h-[550px] lg:h-[700px] pt-12 relative">
         <iframe
           src="https://www.google.com/maps?q=10.878676414489746,77.15547180175781&z=17&output=embed"
           width="600"
