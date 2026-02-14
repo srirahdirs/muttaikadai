@@ -138,7 +138,7 @@ const CartProductCard = ({ product, handleRemoveItem, handleQuantityChange }) =>
     </div>
     <button
       onClick={() => handleRemoveItem(product.id)}
-      className="size-8 grid place-content-center rounded-full bg-pearl ml-auto hover:bg-red-100"
+      className="size-8 grid place-content-center rounded-full bg-pearl ml-auto hover:bg-orange-100"
     >
       <FaX />
     </button>

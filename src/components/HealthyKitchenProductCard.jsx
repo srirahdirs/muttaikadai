@@ -61,7 +61,9 @@ const HealthyKitchenProductCard = ({ product, className }) => {
         </Link>
       </div>
       <div className="flex  flex-col">
-        <h6 className="text-lg text-purple font-bold">{product?.name}</h6>
+        <Link href={productLink}>
+          <h6 className="text-lg text-purple font-bold hover:text-gold transition-colors">{product?.name}</h6>
+        </Link>
         <div className="text-sm font-medium text-gold">
           {formatPrice()}
         </div>

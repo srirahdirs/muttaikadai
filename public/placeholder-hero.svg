@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#010148"/>
+      <stop offset="100%" style="stop-color:#2a2a6e"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="420" fill="url(#bg)"/>
+  <g fill="rgba(255,255,255,0.15)" font-family="sans-serif" font-size="14">
+    <text x="50" y="80">Fresh Eggs</text>
+    <text x="50" y="100">Farm to Door</text>
+    <text x="1150" y="400" text-anchor="end">Muttaikadai</text>
+  </g>
+  <circle cx="600" cy="210" r="80" fill="none" stroke="rgba(255,199,55,0.3)" stroke-width="2"/>
+  <ellipse cx="600" cy="210" rx="35" ry="48" fill="rgba(255,126,2,0.5)"/>
+</svg>

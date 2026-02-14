@@ -10,75 +10,103 @@ const BestDealsCard = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchFeaturedProduct();
-  }, []);
-
-  const fetchFeaturedProduct = async () => {
-    try {
-      const response = await fetch('/api/products?limit=1&featured=true');
-      const data = await response.json();
-      if (data.success && data.data.length > 0) {
-        setProduct(data.data[0]);
+    const fetchProduct = async () => {
+      try {
+        const res = await fetch("/api/products?limit=1&featured=true");
+        const data = await res.json();
+        if (data.success && data.data?.length > 0) {
+          setProduct(data.data[0]);
+        } else {
+          const fallback = await fetch("/api/products?limit=1");
+          const fb = await fallback.json();
+          if (fb.success && fb.data?.length > 0) setProduct(fb.data[0]);
+        }
+      } catch (err) {
+        console.error("Error fetching featured product:", err);
+      } finally {
+        setLoading(false);
       }
-    } catch (error) {
-      console.error('Error fetching featured product:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+    };
+    fetchProduct();
+  }, []);
 
   if (loading) {
     return (
-      <article className="max-w-[540px] isolate mx-auto lg:mx-0 bg-white w-full px-8 py-10 md:px-16 md:py-10 flex flex-col relative rounded-lg shadow-md">
-        <div className="flex items-center justify-center py-8">
-          <div className="w-8 h-8 border-2 border-gold border-t-transparent rounded-full animate-spin"></div>
-        </div>
-      </article>
+      <div className="bg-white rounded-2xl shadow-card p-8 md:p-10 flex items-center justify-center min-h-[320px]">
+        <div className="w-10 h-10 border-2 border-green border-t-transparent rounded-full animate-spin" />
+      </div>
     );
   }
 
   if (!product) {
     return (
-      <article className="max-w-[540px] isolate mx-auto lg:mx-0 bg-white w-full px-8 py-10 md:px-16 md:py-10 flex flex-col relative rounded-lg shadow-md">
-        <p className="text-gray-500 text-center">No featured product available</p>
-      </article>
+      <div className="bg-white rounded-2xl shadow-card p-8 md:p-10 text-center text-gray-500 min-h-[320px] flex items-center justify-center">
+        No product available
+      </div>
     );
   }
 
-  const price = parseFloat(product.sale_price || product.price || 0);
   const regularPrice = parseFloat(product.price || 0);
   const salePrice = product.sale_price ? parseFloat(product.sale_price) : null;
-  const displayPrice = salePrice
-    ? `₹${salePrice.toFixed(2)} - ₹${regularPrice.toFixed(2)}`
-    : `₹${regularPrice.toFixed(2)}`;
+  const displayPrice =
+    salePrice && salePrice < regularPrice
+      ? `₹${salePrice.toFixed(2)} - ₹${regularPrice.toFixed(2)}`
+      : `₹${regularPrice.toFixed(2)}`;
+
+  const imageUrl = product.image_url || "/assets/images/product/1.png";
 
   return (
-    <article className="max-w-[540px] isolate mx-auto lg:mx-0 bg-white w-full px-8 py-10 md:px-16 md:py-10 flex flex-col relative rounded-lg shadow-md">
-      <h5 className="text-2xl line-clamp-2 font-bold mb mb-3">
-        {product.name}
-      </h5>
-      <div className="mb-6">
-        <Rating size={16} value={product.rating || 0} />
-        <div className="text-sm font-medium text-gold">{displayPrice}</div>
-      </div>
-      <p className="text-sm mb-6 line-clamp-4 max-w-56">
-        {product.short_description || product.description || 'Premium quality product'}
-      </p>
-      <ButtonAddToCart product={product} quantity={1}>Add To Cart</ButtonAddToCart>
-      <div className="absolute top-4 right-[10px] bg-contain bg-no-repeat w-[116px] h-[99px] bg-deals-card-bg z-[-1]"></div>
-      
-      <div className="absolute -bottom-4 z-[-1] -right-2 bg-contain bg-no-repeat w-[290px] h-[290px]">
-      <div className="absolute inset-0 bg-black/45 -right-2 -bottom-4 backdrop-blur-sm border border-white/20 rounded-lg z-[1]"> </div>
-        <div className="absolute -bottom-4 z-[-1] -right-2 w-[290px] h-[290px] relative overflow-hidden">
-          <Image
-            src="/img/home/free_range_organic_eggs_natural_eggs_from_happy.jpg"
-            alt=""
-            fill
-            className="object-cover object-center"
-          />
+    <article className="bg-white rounded-2xl shadow-card overflow-hidden flex flex-col md:flex-row min-h-[320px]">
+      {/* Content - left side */}
+      <div className="flex-1 p-8 md:p-10 flex flex-col justify-between">
+        <div>
+          <h5 className="text-xl md:text-2xl font-bold text-purple mb-3 line-clamp-2 md:hidden">
+            {product.name}
+          </h5>
+          <div className="mb-4">
+            <Rating value={product.rating || 0} className="size-5" />
+          </div>
+          <div className="text-orange font-semibold text-lg mb-4">
+            {displayPrice}
+          </div>
+          {product.unit && (
+            <p className="text-sm text-gray-500 mb-2">{product.unit}</p>
+          )}
+          <p className="text-sm text-light-gray line-clamp-3 mb-6">
+            {product.short_description ||
+              product.description ||
+              "Premium quality product from our farm."}
+          </p>
         </div>
+        <ButtonAddToCart
+          product={product}
+          quantity={1}
+          className="h-12 px-6 rounded-full bg-green hover:bg-gold text-white font-medium flex items-center gap-2 w-fit"
+        >
+          ADD TO CART
+        </ButtonAddToCart>
+      </div>
+
+      {/* Image - right side with product name overlay in empty space */}
+      <div className="relative w-full md:w-[220px] lg:w-[260px] flex-shrink-0 flex items-center justify-center min-h-[200px] md:min-h-0">
+        <h5 className="absolute top-4 left-4 right-4 md:top-6 md:left-6 md:right-6 text-lg md:text-xl font-bold text-purple line-clamp-2 z-10">
+          {product.name}
+        </h5>
+        <Image
+          src={imageUrl}
+          alt={product.name}
+          width={260}
+          height={260}
+          className="object-contain w-full h-auto"
+          sizes="(max-width: 768px) 100vw, 260px"
+          onError={(e) => {
+            e.target.src = "/assets/images/product/1.png";
+            e.target.onerror = null;
+          }}
+        />
       </div>
     </article>
   );
 };
+
 export default BestDealsCard;

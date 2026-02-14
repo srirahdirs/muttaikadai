@@ -47,8 +47,14 @@ export async function GET(request) {
     });
   } catch (error) {
     console.error('Error fetching categories:', error);
+    const isDbError = error?.code === 'ECONNREFUSED' || error?.code === 'ENOTFOUND';
     return NextResponse.json(
-      { success: false, error: 'Failed to fetch categories' },
+      {
+        success: false,
+        error: isDbError
+          ? 'Database connection failed. Ensure MySQL is running (start XAMPP MySQL).'
+          : 'Failed to fetch categories',
+      },
       { status: 500 }
     );
   }

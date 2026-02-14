@@ -64,5 +64,5 @@ input[type="range"]::-webkit-slider-thumb {
 
 .text-gold {
   --tw-text-opacity: 1;
-  color: red !important;
+  color: #FF7E02 !important;
 }

@@ -122,11 +122,11 @@ export default function AdminCategories() {
                   <button
                     onClick={() => setShowDeleteModal(category.id)}
                     disabled={deletingId === category.id}
-                    className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="p-2 text-orange hover:bg-orange-50 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
                     title="Delete"
                   >
                     {deletingId === category.id ? (
-                      <div className="w-4 h-4 border-2 border-red-600 border-t-transparent rounded-full animate-spin"></div>
+                      <div className="w-4 h-4 border-2 border-orange border-t-transparent rounded-full animate-spin"></div>
                     ) : (
                       <FiTrash2 />
                     )}
@@ -170,7 +170,7 @@ export default function AdminCategories() {
               <button
                 onClick={() => handleDelete(showDeleteModal)}
                 disabled={deletingId === showDeleteModal}
-                className="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                className="flex-1 px-4 py-2 bg-orange text-white rounded-lg hover:bg-orange-600 transition disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               >
                 {deletingId === showDeleteModal ? (
                   <>

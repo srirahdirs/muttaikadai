@@ -1,32 +1,33 @@
 "use client";
+
 import React from "react";
 import Countdown from "react-countdown";
 import { twMerge } from "tailwind-merge";
 
 const BestDealsCountdown = ({ endTimeInHour, className }) => {
-  console.log(endTimeInHour);
   function hoursToMilliseconds(hours) {
     return hours * 60 * 60 * 1000;
   }
 
-  // Random component
   const Completionist = () => (
-    <span className="text-lg font-bold text-gold">Sales Offer Ends</span>
+    <span className="text-lg font-bold text-orange">Sales Offer Ends</span>
   );
 
-  // Renderer callback with condition
+  const pad = (n) => String(n).padStart(2, "0");
+
   const renderer = ({ hours, minutes, seconds, completed }) => {
     if (completed) {
-      // Render a completed state
       return <Completionist />;
-    } else {
-      // Render a countdown
-      return (
-        <div className={twMerge("my-4 flex gap-7 items-center ", className)}>
-          <span>{hours}</span>:<span>{minutes}</span>:<span>{seconds}</span>
-        </div>
-      );
     }
+    return (
+      <div className={twMerge("flex gap-1 md:gap-2 items-baseline", className)}>
+        <span>{pad(hours)}</span>
+        <span className="opacity-60">:</span>
+        <span>{pad(minutes)}</span>
+        <span className="opacity-60">:</span>
+        <span>{pad(seconds)}</span>
+      </div>
+    );
   };
 
   return (

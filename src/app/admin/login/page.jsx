@@ -52,7 +52,7 @@ export default function AdminLogin() {
           <h2 className="text-2xl font-bold text-gray-900 mb-6">Sign In</h2>
 
           {error && (
-            <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-700 rounded-lg text-sm">
+            <div className="mb-4 p-3 bg-orange-50 border border-orange-200 text-orange-700 rounded-lg text-sm">
               {error}
             </div>
           )}

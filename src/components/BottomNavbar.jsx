@@ -20,7 +20,7 @@ export const LINKS = [
 const BottomNavbar = () => {
   return (
     <div className="border-y border-silver-mist text-dark-gray hidden lg:block mb-5">
-      <Container className="flex items-center text-sm gap-[10px] justify-between">
+      <Container className="flex items-center text-sm gap-[10px]">
         <div className="flex items-center gap-8">
           <CategoriesDropDown />
 
@@ -28,20 +28,13 @@ const BottomNavbar = () => {
             <Link className="hover:text-gold transition-all" href="/">
               Home
             </Link>
-            {/* <ShopDropDown /> */}
-            {/* <BlogDropDown /> */}
+            <Link className="hover:text-gold transition-all" href="/about">
+              About
+            </Link>
             <Link className="hover:text-gold transition-all" href="/contact">
               Contact
             </Link>
           </div>
-        </div>
-        <div className="flex items-center divide-x divide-dark-gray">
-          <Link className="pl-4 pr-4 h-fit" href="/">
-            Offer
-          </Link>
-          <Link className="pl-4 pr-4 h-fit" href="/">
-            Sale
-          </Link>
         </div>
       </Container>
     </div>

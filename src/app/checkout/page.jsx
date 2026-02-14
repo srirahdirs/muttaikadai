@@ -111,13 +111,13 @@ const CheckoutPage = () => {
               <div>
                 <div className="flex mb-5 flex-col">
                   <label className="checkout-input-label" htmlFor="mobile">
-                    Mobile Number <span className="text-red-500">*</span>
+                    Mobile Number <span className="text-orange">*</span>
                   </label>
                   <input
                     required
                     id="mobile"
                     name="mobile"
-                    className={`checkout-input ${errors.mobile ? "border-red-500" : ""}`}
+                    className={`checkout-input ${errors.mobile ? "border-orange" : ""}`}
                     type="tel"
                     placeholder="Enter your 10-digit mobile number"
                     value={formData.mobile}
@@ -125,7 +125,7 @@ const CheckoutPage = () => {
                     maxLength={10}
                   />
                   {errors.mobile && (
-                    <p className="text-red-500 text-sm mt-1">{errors.mobile}</p>
+                    <p className="text-orange text-sm mt-1">{errors.mobile}</p>
                   )}
                 </div>
 
@@ -136,14 +136,14 @@ const CheckoutPage = () => {
                   <input
                     id="email"
                     name="email"
-                    className={`checkout-input ${errors.email ? "border-red-500" : ""}`}
+                    className={`checkout-input ${errors.email ? "border-orange" : ""}`}
                     type="email"
                     placeholder="Enter your email address"
                     value={formData.email}
                     onChange={handleChange}
                   />
                   {errors.email && (
-                    <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+                    <p className="text-orange text-sm mt-1">{errors.email}</p>
                   )}
                 </div>
 

@@ -110,7 +110,7 @@ export default function AdminLayout({ children }) {
             </div>
             <button
               onClick={handleLogout}
-              className="w-full flex items-center gap-3 px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg transition"
+              className="w-full flex items-center gap-3 px-4 py-3 text-orange hover:bg-orange-50 rounded-lg transition"
             >
               <FiLogOut />
               <span className="font-medium">Logout</span>

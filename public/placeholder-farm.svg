@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="546" height="330" viewBox="0 0 546 330">
+  <defs>
+    <linearGradient id="farm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F2F7F3"/>
+      <stop offset="100%" style="stop-color:#E8EEE4"/>
+    </linearGradient>
+  </defs>
+  <rect width="546" height="330" fill="url(#farm)"/>
+  <rect x="50" y="50" width="446" height="230" rx="8" fill="#fff" stroke="#E6E6E6" stroke-width="1"/>
+  <text x="273" y="140" text-anchor="middle" fill="#858585" font-size="16" font-family="sans-serif">Farm Fresh</text>
+  <text x="273" y="165" text-anchor="middle" fill="#A9ADB9" font-size="14" font-family="sans-serif">Local farms • Coimbatore</text>
+  <circle cx="273" cy="220" r="40" fill="#FFC737" opacity="0.2"/>
+  <ellipse cx="273" cy="220" rx="18" ry="24" fill="#FF7E02" opacity="0.6"/>
+</svg>

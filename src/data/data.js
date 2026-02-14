@@ -531,6 +531,29 @@ export const members = [
   },
 ];
 
+export const aboutTeam = [
+  {
+    image: "/placeholder-team.svg",
+    name: "Karthikeyan N",
+    title: "Founder & Owner",
+  },
+  {
+    image: "/placeholder-team.svg",
+    name: "Operations",
+    title: "Farm & Supply",
+  },
+  {
+    image: "/placeholder-team.svg",
+    name: "Sales Team",
+    title: "Customer Service",
+  },
+  {
+    image: "/placeholder-team.svg",
+    name: "Delivery",
+    title: "Fresh at Your Door",
+  },
+];
+
 export const allBlogs = [
   {
     imageUrl: "/assets/images/blog/1.jpg",
