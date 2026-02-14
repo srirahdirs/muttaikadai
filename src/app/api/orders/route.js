@@ -149,8 +149,8 @@ export async function POST(request) {
 export async function GET(request) {
   try {
     const { searchParams } = new URL(request.url);
-    const page = parseInt(searchParams.get('page') || '1');
-    const limit = parseInt(searchParams.get('limit') || '20');
+    const page = Math.max(1, parseInt(searchParams.get('page') || '1', 10) || 1);
+    const limit = Math.min(100, Math.max(1, parseInt(searchParams.get('limit') || '20', 10) || 20));
     const status = searchParams.get('status');
     const offset = (page - 1) * limit;
 
@@ -167,14 +167,15 @@ export async function GET(request) {
       params.push(status);
     }
 
-    query += ' ORDER BY o.created_at DESC LIMIT ? OFFSET ?';
-    params.push(limit, offset);
+    const safeLimit = Number(limit) || 20;
+    const safeOffset = Number(offset) || 0;
+    query += ` ORDER BY o.created_at DESC LIMIT ${safeLimit} OFFSET ${safeOffset}`;
 
     const [orders] = await pool.execute(query, params);
 
     // Get total count
     const countQuery = query.replace(/SELECT.*FROM/, 'SELECT COUNT(*) as total FROM').split('ORDER BY')[0];
-    const [countResult] = await pool.execute(countQuery, params.slice(0, -2));
+    const [countResult] = await pool.execute(countQuery, params);
     const total = countResult[0].total;
 
     return NextResponse.json({

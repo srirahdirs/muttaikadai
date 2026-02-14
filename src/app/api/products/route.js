@@ -12,8 +12,8 @@ export async function GET(request) {
     const search = searchParams.get('search');
     const minPrice = searchParams.get('min_price');
     const maxPrice = searchParams.get('max_price');
-    const page = parseInt(searchParams.get('page') || '1');
-    const limit = parseInt(searchParams.get('limit') || '12');
+    const page = Math.max(1, parseInt(searchParams.get('page') || '1', 10) || 1);
+    const limit = Math.min(100, Math.max(1, parseInt(searchParams.get('limit') || '12', 10) || 12));
     const sort = searchParams.get('sort') || 'created_at'; // price_asc, price_desc, name, created_at
     const offset = (page - 1) * limit;
 
@@ -76,9 +76,10 @@ export async function GET(request) {
     const [countResult] = await pool.execute(countQueryWithoutOrder, params);
     const total = countResult[0].total;
 
-    // Add limit and offset
-    query += ' LIMIT ? OFFSET ?';
-    params.push(limit, offset);
+    // Add limit and offset - use literals to avoid mysql2 ER_WRONG_ARGUMENTS with prepared stmt
+    const safeLimit = Number(limit) || 12;
+    const safeOffset = Number(offset) || 0;
+    query += ` LIMIT ${safeLimit} OFFSET ${safeOffset}`;
 
     const [products] = await pool.execute(query, params);
 
