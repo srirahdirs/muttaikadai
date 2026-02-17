@@ -70,10 +70,10 @@ export const ShopDropDown = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuItem>
-          <Link href="/shop-1">Shop One</Link>
+          <Link href="/shop-2">Shop</Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
-          <Link href="/shop-2">Shop Two</Link>
+          <Link href="/shop-2/1">Shop Details</Link>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
