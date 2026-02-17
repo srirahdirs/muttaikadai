@@ -5,7 +5,6 @@ import Link from "next/link";
 import { IoMdHeartEmpty } from "react-icons/io";
 import { FiMenu } from "react-icons/fi";
 import MobileNavbar from "./MobileNavbar";
-import Account from "./Account";
 import CategoriesDropDown from "./CategoriesDropDown";
 import SearchBar from "./SearchBar";
 import MobileNavItems from "./MobileNavItems";
@@ -75,9 +74,12 @@ const TopNavbar = () => {
                 effect="solid"
               />
             </div>
-            <div className="hidden sm:block">
-              <Account />
-            </div>
+            <Link
+              href="/contact"
+              className="hidden sm:flex items-center gap-2 text-dark-gray hover:text-gold transition-colors"
+            >
+              <span>Contact</span>
+            </Link>
 
             <div>
               <button
@@ -90,7 +92,9 @@ const TopNavbar = () => {
                 <MobileNavbar close={close}>
                   <div className="flex gap-8 flex-col text-lg">
                     <SearchBar showCategory={false} onClose={close} />
-                    <Account onClose={close} />
+                    <Link href="/contact" onClick={close} className="text-dark-gray hover:text-gold">
+                      Contact
+                    </Link>
                     <CategoriesDropDown onClose={close} />
                   </div>
                   <MobileNavItems onClose={close} />
