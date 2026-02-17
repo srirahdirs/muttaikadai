@@ -79,7 +79,8 @@ function formatOrderMessage(order) {
   
   message += `\n*Items:*\n`;
   order.items.forEach((item, index) => {
-    message += `${index + 1}. ${item.product_name} - Qty: ${item.quantity} × ₹${item.price}\n`;
+    const name = item.product_name || item.name || 'Product';
+    message += `${index + 1}. ${name} - Qty: ${item.quantity} × ₹${item.price}\n`;
   });
   
   message += `\n*Total Amount:* ₹${order.total.toFixed(2)}\n`;

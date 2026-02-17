@@ -53,21 +53,22 @@ export async function POST(request) {
 
       const orderId = orderResult.insertId;
 
-      // Create order items
-      const orderItems = items.map((item) => [
+      // Create order items (mysql2 requires explicit placeholders for bulk insert)
+      const placeholders = items.map(() => '(?, ?, ?, ?, ?, ?)').join(', ');
+      const orderItemValues = items.flatMap((item) => [
         orderId,
         item.product_id,
-        item.name,
-        item.price,
-        item.quantity,
-        item.price * item.quantity, // subtotal
+        item.name || 'Product',
+        parseFloat(item.price) || 0,
+        parseInt(item.quantity, 10) || 1,
+        (parseFloat(item.price) || 0) * (parseInt(item.quantity, 10) || 1),
       ]);
 
       await connection.execute(
         `INSERT INTO order_items (
           order_id, product_id, product_name, product_price, quantity, subtotal
-        ) VALUES ?`,
-        [orderItems]
+        ) VALUES ${placeholders}`,
+        orderItemValues
       );
 
       // Commit transaction
@@ -138,8 +139,9 @@ export async function POST(request) {
     }
   } catch (error) {
     console.error('Error creating order:', error);
+    const message = process.env.NODE_ENV === 'development' ? error.message : 'Failed to create order';
     return NextResponse.json(
-      { success: false, error: 'Failed to create order' },
+      { success: false, error: message },
       { status: 500 }
     );
   }
@@ -163,7 +165,7 @@ export async function GET(request) {
     const params = [];
 
     if (status) {
-      query += ' AND o.status = ?';
+      query += ' AND o.order_status = ?';
       params.push(status);
     }
 
