@@ -62,7 +62,7 @@ const FooterContent = () => {
           </Link>
           <div className="flex items-center gap-3">
             <MdOutlineEmail className="text-gold text-xl" />
-            <p>sales@muttaikadai.com</p>
+            <p>nkarthikeyan@live.com</p>
           </div>
           <div className="flex items-center gap-3">
             <FaMobileAlt className="text-gold text-xl" />

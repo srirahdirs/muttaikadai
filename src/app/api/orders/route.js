@@ -1,5 +1,9 @@
 import pool from '../../../lib/db';
 import { NextResponse } from 'next/server';
+import { sendEmail } from '../../../lib/email';
+
+// Admin email for order notifications
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || process.env.ORDER_ADMIN_EMAIL || 'nkarthikeyan@live.com';
 
 // POST create new order
 export async function POST(request) {
@@ -74,46 +78,41 @@ export async function POST(request) {
       // Commit transaction
       await connection.commit();
 
-      // Get the created order with items
-      const [order] = await connection.execute(
-        `SELECT o.*, 
-         JSON_ARRAYAGG(
-           JSON_OBJECT(
-             'id', oi.id,
-             'product_id', oi.product_id,
-             'product_name', oi.product_name,
-             'quantity', oi.quantity,
-             'price', oi.product_price
-           )
-         ) as items
-         FROM orders o
-         LEFT JOIN order_items oi ON o.id = oi.order_id
-         WHERE o.id = ?
-         GROUP BY o.id`,
-        [orderId]
-      );
-
       connection.release();
 
-      // Send WhatsApp notification
-      try {
-        const { sendOrderNotification } = await import('../../../lib/whatsapp');
-        await sendOrderNotification(
-          {
-            id: orderId,
-            order_number: orderNumber,
-            mobile: mobileNumber,
-            email: email || null,
-            address: address || null,
-            total: parseFloat(total),
-            status: 'pending',
-            items: items,
-          },
-          mobileNumber
+      // Send email to admin with order details
+      const adminEmailHtml = `
+        <h2>🛒 New Order Received</h2>
+        <p><strong>Order ID:</strong> #${orderNumber}</p>
+        <p><strong>Mobile:</strong> ${mobileNumber}</p>
+        <p><strong>Email:</strong> ${email || '—'}</p>
+        <p><strong>Address:</strong> ${address || '—'}</p>
+        <p><strong>Total:</strong> ₹${parseFloat(total).toFixed(2)}</p>
+        <h3>Items:</h3>
+        <ul>
+          ${items.map((i, idx) => `<li>${i.name || 'Product'} × ${i.quantity} = ₹${(parseFloat(i.price) || 0) * (parseInt(i.quantity, 10) || 1)}</li>`).join('')}
+        </ul>
+      `;
+      sendEmail({ to: ADMIN_EMAIL, subject: `New Order #${orderNumber} - Muttaikadai`, html: adminEmailHtml }).catch((e) =>
+        console.error('Admin email error:', e)
+      );
+
+      // Send order confirmation email to customer (if email provided)
+      if (email && email.trim() && email !== 'noemail@example.com') {
+        const customerEmailHtml = `
+          <h2>✅ Order Confirmed!</h2>
+          <p>Thank you for your order. Your order <strong>#${orderNumber}</strong> has been received.</p>
+          <p><strong>Total:</strong> ₹${parseFloat(total).toFixed(2)}</p>
+          <p><strong>Items:</strong></p>
+          <ul>
+            ${items.map((i) => `<li>${i.name || 'Product'} × ${i.quantity}</li>`).join('')}
+          </ul>
+          <p>We'll notify you once your order is ready for delivery.</p>
+          <p>Thank you for shopping with Muttaikadai! 🥚</p>
+        `;
+        sendEmail({ to: email.trim(), subject: `Order Confirmed #${orderNumber} - Muttaikadai`, html: customerEmailHtml }).catch((e) =>
+          console.error('Customer email error:', e)
         );
-      } catch (whatsappError) {
-        console.error('WhatsApp notification error (non-critical):', whatsappError);
-        // Don't fail the order if WhatsApp fails
       }
 
       return NextResponse.json(

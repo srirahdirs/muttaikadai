@@ -66,3 +66,29 @@ input[type="range"]::-webkit-slider-thumb {
   --tw-text-opacity: 1;
   color: #FF7E02 !important;
 }
+
+/* Order success modal animation */
+@keyframes orderSuccessFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes orderSuccessScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.order-success-overlay {
+  animation: orderSuccessFadeIn 0.25s ease-out;
+}
+.order-success-modal {
+  animation: orderSuccessScaleIn 0.3s ease-out;
+}

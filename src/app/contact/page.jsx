@@ -199,7 +199,7 @@ const ContactPage = () => {
               <div className="flex flex-col gap-3">
                 <h6 className="text-dark-gray text-2xl uppercase">Email</h6>
                 <div className="text-light-gray text-sm">
-                  <p>sales@muttaikadai.com</p>
+                  <p>nkarthikeyan@live.com</p>
                 </div>
               </div>
             </div>

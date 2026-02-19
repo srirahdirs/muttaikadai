@@ -63,7 +63,7 @@ const jsonLd = {
   description: "Fresh farm eggs delivery in Coimbatore - country eggs, free-range eggs, organic eggs.",
   url: "https://muttaikadai.com",
   telephone: "+91-9663460555",
-  email: "sales@muttaikadai.com",
+  email: "nkarthikeyan@live.com",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Poo thottam (near BSNL tower), Vadavalli, V.N Palayam",
